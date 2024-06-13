@@ -52,26 +52,19 @@ class TurtlebotCtrl(Node):
 		index_x += int(self.map.shape[0]/2)
 		index_y += int(self.map.shape[0]/2)
 
-		# self.get_logger().info("x: "+str(index_x))
-		# self.get_logger().info(str(index_y))
-
 		if (index_x < 1): index_x = 1
 		if (index_x > self.map.shape[0]-1): index_x = self.map.shape[0]-1
 		if (index_y < 1): index_y = 1
 		if (index_y > self.map.shape[0]-1): index_y = self.map.shape[0]-1
 
-		# self.get_logger().info(str(index_x))
-		# self.get_logger().info(str(index_y))
-
 		if (self.map[index_x][index_y] == 1):
 			self.map[index_x][index_y] = 2
 
-			print(self.map)
-			# print(self.laser.ranges[0])
-
-			self.get_logger().info("Another part aspirated ... percentage total aspirated.... " + str(100*float(np.count_nonzero(self.map == 2))/(np.count_nonzero(self.map == 1) + np.count_nonzero(self.map == 2))) )
+			self.get_logger().info("Another part reached ... percentage total reached...." + str(100*float(np.count_nonzero(self.map == 2))/(np.count_nonzero(self.map == 1) + np.count_nonzero(self.map == 2))) )
 			self.get_logger().info("Discrete Map")
-			self.get_logger().info(str(self.map))
+			self.get_logger().info("\n"+str(self.map))
+
+        # Desenvlva seu codigo aqui
 
 		msg = Twist()
 		msg.linear.x = 0.1
